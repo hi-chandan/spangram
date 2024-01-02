@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -56,8 +55,8 @@ export function SignupFrom() {
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
+              <FormItem className="text-red">
+                <FormLabel className=" text-white">Name</FormLabel>
                 <FormControl>
                   <Input
                     className="text-black font-bold"
@@ -65,9 +64,7 @@ export function SignupFrom() {
                     {...field}
                   />
                 </FormControl>
-                {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
+
                 <FormMessage />
               </FormItem>
             )}
@@ -76,8 +73,8 @@ export function SignupFrom() {
             control={form.control}
             name="username"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
+              <FormItem className="text-red">
+                <FormLabel className="text-white">Username</FormLabel>
                 <FormControl>
                   <Input
                     className="text-black font-bold"
@@ -85,9 +82,7 @@ export function SignupFrom() {
                     {...field}
                   />
                 </FormControl>
-                {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
+
                 <FormMessage />
               </FormItem>
             )}
@@ -96,8 +91,8 @@ export function SignupFrom() {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
+              <FormItem className="text-red">
+                <FormLabel className="text-white">Email</FormLabel>
                 <FormControl>
                   <Input
                     className="text-black font-bold"
@@ -105,9 +100,7 @@ export function SignupFrom() {
                     {...field}
                   />
                 </FormControl>
-                {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
+
                 <FormMessage />
               </FormItem>
             )}
@@ -116,8 +109,8 @@ export function SignupFrom() {
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
+              <FormItem className="text-red">
+                <FormLabel className="text-white">Password</FormLabel>
                 <FormControl>
                   <Input
                     className="text-black font-bold"
@@ -125,9 +118,7 @@ export function SignupFrom() {
                     {...field}
                   />
                 </FormControl>
-                {/* <FormDescription>
-                  This is your public display name.
-                </FormDescription> */}
+
                 <FormMessage />
               </FormItem>
             )}
