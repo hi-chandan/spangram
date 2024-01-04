@@ -8,23 +8,17 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-});
+import { createUserAccount } from "@/lib/appwrite/api";
 
 export function SignupFrom() {
   // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
     defaultValues: {
       name: "",
@@ -35,10 +29,11 @@ export function SignupFrom() {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof SignupValidation>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    const newUser = await createUserAccount(values);
+    console.log(newUser);
   }
 
   return (
@@ -56,8 +51,8 @@ export function SignupFrom() {
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
+              <FormItem className="text-red">
+                <FormLabel className="text-white">Name</FormLabel>
                 <FormControl>
                   <Input
                     className="text-black font-bold"
@@ -76,8 +71,8 @@ export function SignupFrom() {
             control={form.control}
             name="username"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
+              <FormItem className="text-red">
+                <FormLabel className="text-white">Username</FormLabel>
                 <FormControl>
                   <Input
                     className="text-black font-bold"
@@ -122,6 +117,7 @@ export function SignupFrom() {
                   <Input
                     className="text-black font-bold"
                     placeholder="Enter you password"
+                    type="password"
                     {...field}
                   />
                 </FormControl>
