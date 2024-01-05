@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { createUserAccount } from "@/lib/appwrite/api";
+import { CreateUserAccount } from "@/lib/appwrite/api";
 
 export function SignupFrom() {
   // 1. Define your form.
@@ -32,8 +32,8 @@ export function SignupFrom() {
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    const newUser = await createUserAccount(values);
-    console.log(newUser);
+    const newUser = await CreateUserAccount(values);
+    console.log("This is the result ", newUser);
   }
 
   return (
