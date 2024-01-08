@@ -18,14 +18,20 @@ import { CreateUserAccount } from "@/lib/appwrite/api";
 import { appwriteConfig } from "@/lib/appwrite/config";
 import { useToast } from "@/components/ui/use-toast";
 import {
-  useCreateUserAccountMutation,
+  useCreateUserAccount,
   useSignInAccount,
 } from "@/lib/react-query/queriesAndMutations";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "@/context/AuthContext";
 export function SignupFrom() {
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
-  const { mutateAsync: CreateUserAccount, isPending: isCreatingAccount } =
-    useCreateUserAccountMutation();
+  const { mutateAsync: CreateUserAccount, isPending: isCreatingaccount } =
+    useCreateUserAccount();
+
+  console.log("this is isCreatingaccount", isCreatingaccount);
 
   const { mutateAsync: signInAccount, isPending: isSigninIn } =
     useSignInAccount();
@@ -40,30 +46,38 @@ export function SignupFrom() {
     },
   });
 
-  console.log("this is id", appwriteConfig.url);
-  console.log("this is id", appwriteConfig.projectId);
-  console.log("this is id", appwriteConfig.databaseId);
-  console.log("this is id to storage", appwriteConfig.storageId);
-  console.log("this is id", appwriteConfig.userCollectionId);
-  console.log("this is id", appwriteConfig.postCollectionId);
-  console.log("this is id", appwriteConfig.savesCollectionId);
-
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof SignupValidation>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     const newUser = await CreateUserAccount(values);
-    if (!newUser) {
-      return toast({ title: "Sign up failed. please try again" });
-    }
+    try {
+      if (!newUser) {
+        return toast({ title: "Sign up failed. please try again" });
+      }
 
-    const session = await signInAccount({
-      email: values.email,
-      password: values.password,
-    });
+      const session = await signInAccount({
+        email: values.email,
+        password: values.password,
+      });
 
-    if (!session) {
-      return toast({ title: "Sign in failed. Please try again." });
+      if (!session) {
+        return toast({ title: "Sign in failed. Please try again." });
+      }
+
+      const isLoggedIn = await checkAuthUser();
+      if (isLoggedIn) {
+        form.reset();
+
+        navigate("/");
+        toast({ title: "Signup Success" });
+      } else {
+        toast({ title: "Login failed. Please try again." });
+
+        return;
+      }
+    } catch (error) {
+      console.log({ error });
     }
   }
 
@@ -156,7 +170,7 @@ export function SignupFrom() {
             className="bg-gray-950 w-full"
             variant="outline"
           >
-            {isCreatingAccount ? <div className="">Loading...</div> : "Sign up"}
+            {isCreatingaccount ? <div className="">Loading...</div> : "Sign up"}
           </Button>
         </form>
       </div>

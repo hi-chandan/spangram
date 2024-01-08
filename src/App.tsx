@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import SigninForm from "./_auth/forms/SigninForm";
 import SignupFrom from "./_auth/forms/SignupFrom";

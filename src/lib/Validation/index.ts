@@ -10,3 +10,10 @@ import * as z from "zod";
   password: z.string().min(8,{message: "password must be at less 8 character"}),
 
 });
+
+ export const SigninValidation  = z.object({
+
+  email: z.string().email(),
+  password: z.string().min(8,{message: "password must be at less 8 character"}),
+
+});
