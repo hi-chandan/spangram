@@ -40,6 +40,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setIsLoading(true);
     try {
       const currentAccount = await getCurrentUser();
+
       if (currentAccount) {
         setUser({
           id: currentAccount.$id,
@@ -82,6 +83,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setIsAuthenticated,
     checkAuthUser,
   };
+  console.log("This is value of auth", value);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
