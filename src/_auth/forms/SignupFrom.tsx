@@ -21,7 +21,7 @@ import {
   useCreateUserAccount,
   useSignInAccount,
 } from "@/lib/react-query/queriesAndMutations";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "@/context/AuthContext";
 export function SignupFrom() {
   const { toast } = useToast();
@@ -91,7 +91,7 @@ export function SignupFrom() {
         <p className="text-light-3 small-medium md:base-regular mt-2">
           To use Spangram enter your details
         </p>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 ">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 ">
           <FormField
             control={form.control}
             name="name"
@@ -172,6 +172,15 @@ export function SignupFrom() {
           >
             {isCreatingaccount ? <div className="">Loading...</div> : "Sign up"}
           </Button>
+          <p className="text-small-regular text-light-2 text-center mt-2">
+            Already have an account?
+            <Link
+              to="/sign-in"
+              className="text-primary-500 text-small-semibold ml-1"
+            >
+              Log in
+            </Link>
+          </p>
         </form>
       </div>
     </Form>

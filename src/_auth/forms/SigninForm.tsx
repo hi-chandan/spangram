@@ -21,7 +21,7 @@ import {
   useCreateUserAccount,
   useSignInAccount,
 } from "@/lib/react-query/queriesAndMutations";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "@/context/AuthContext";
 export function SigninFrom() {
   const { toast } = useToast();
@@ -123,6 +123,12 @@ export function SigninFrom() {
           >
             {isUserLoading ? <div className="">Loading...</div> : "Sign-in"}
           </Button>
+          <p className="text-small-regular text-light-2 text-center mt-2">
+            Don&apos;t have an account?
+            <Link to="/" className="text-primary-500 text-small-semibold ml-1">
+              Sign up
+            </Link>
+          </p>
         </form>
       </div>
     </Form>
