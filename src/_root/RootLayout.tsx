@@ -7,11 +7,11 @@ import { Outlet } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="w-full md:flex">
-      <Topbar />
+    <div className="w-full md:flex ">
       <LeftSidebar />
+      <Topbar />
 
-      <section className="">
+      <section className="flex flex-1 h-full">
         <Outlet />
       </section>
       <Bottombar />
