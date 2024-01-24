@@ -9,7 +9,7 @@ import { useEffect } from "react";
 const LeftSidebar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
+  const { user, setUser, setIsAuthenticated } = useUserContext();
   const { mutate: signOut, isSuccess } = useSignOutAccount();
 
   useEffect(() => {
@@ -83,7 +83,7 @@ const LeftSidebar = () => {
         <Button
           variant="ghost"
           className="shad-button_ghost"
-          onClick={() => signOut()}
+          onClick={(e) => handleSignOut(e)}
         >
           <img src="/assets/icons/logout.svg" alt="logout" />
           <p className="small-medium lg:base-medium">Logout</p>

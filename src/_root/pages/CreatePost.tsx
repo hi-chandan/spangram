@@ -1,4 +1,3 @@
-import React from "react";
 import PostFrom from "@/components/forms/PostFrom";
 const CreatePost = () => {
   return (

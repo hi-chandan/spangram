@@ -14,8 +14,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { CreateUserAccount } from "@/lib/appwrite/api";
-import { appwriteConfig } from "@/lib/appwrite/config";
 import { useToast } from "@/components/ui/use-toast";
 import {
   useCreateUserAccount,
@@ -26,15 +24,14 @@ import { useUserContext } from "@/context/AuthContext";
 export function SignupFrom() {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const { checkAuthUser } = useUserContext();
 
   const { mutateAsync: CreateUserAccount, isPending: isCreatingaccount } =
     useCreateUserAccount();
 
   console.log("this is isCreatingaccount", isCreatingaccount);
 
-  const { mutateAsync: signInAccount, isPending: isSigninIn } =
-    useSignInAccount();
+  const { mutateAsync: signInAccount } = useSignInAccount();
   // 1. Define your form.
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
