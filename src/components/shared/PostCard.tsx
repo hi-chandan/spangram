@@ -10,13 +10,11 @@ type PostCardProps = {
 
 const PostCard = ({ post }: PostCardProps) => {
   const { user } = useUserContext();
-
-  console.log("this is post", post);
   if (!post.creator) {
     return;
   }
   return (
-    <div className="post-card ">
+    <div className="post-card  ">
       <div className="flex-between  ">
         <div className="flex items-center gap-3">
           <Link to={`/profile/${post.creator.$id}`}>
@@ -46,13 +44,13 @@ const PostCard = ({ post }: PostCardProps) => {
         </div>
 
         <Link
-          to={`/update-post/${post.id}`}
+          to={`/update-post/${post.$id}`}
           className={`${user.id !== post.creator.$id && "hidden"}`}
         >
           <img src="/assets/icons/edit.svg" alt="" height={20} width={20} />
         </Link>
       </div>
-      <Link to={`/post/${post.id}`}>
+      <Link to={`/post/${post.$id}`}>
         <div className="small-medium lg:base:medium py-5">
           <p>{post.caption}</p>
           <ul className="flex gap-1 mt-2">

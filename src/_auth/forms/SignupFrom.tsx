@@ -72,9 +72,7 @@ export function SignupFrom() {
         navigate("/");
         toast({ title: "Signup Success" });
       } else {
-        toast({ title: "Login failed. Please try again." });
-
-        return;
+        return toast({ title: "Login failed. Please try again." });
       }
     } catch (error) {
       console.log({ error });

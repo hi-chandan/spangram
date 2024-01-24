@@ -83,7 +83,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setIsAuthenticated,
     checkAuthUser,
   };
-  console.log("This is value of auth", value);
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 

@@ -5,13 +5,19 @@ import { Button } from "@/components/ui/button";
 import { useSignOutAccount } from "@/lib/react-query/queriesAndMutations";
 import { useUserContext, INITIAL_USER } from "@/context/AuthContext";
 import { sidebarLinks } from "@/constants";
-
+import { useEffect } from "react";
 const LeftSidebar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
+  const { mutate: signOut, isSuccess } = useSignOutAccount();
 
-  const { mutate: signOut } = useSignOutAccount();
+  useEffect(() => {
+    if (isSuccess) {
+      window.location.reload();
+      navigate("/");
+    }
+  }, [isSuccess]);
 
   const handleSignOut = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -71,14 +77,18 @@ const LeftSidebar = () => {
           })}
         </ul>
       </div>
-      <Button
-        variant="ghost"
-        className="shad-button_ghost"
-        onClick={() => signOut()}
-      >
-        <img src="/assets/icons/logout.svg" alt="logout" />
-        <p className="small-medium lg:base-medium">Logout</p>
-      </Button>
+      {isSuccess ? (
+        <p>Loading...</p>
+      ) : (
+        <Button
+          variant="ghost"
+          className="shad-button_ghost"
+          onClick={() => signOut()}
+        >
+          <img src="/assets/icons/logout.svg" alt="logout" />
+          <p className="small-medium lg:base-medium">Logout</p>
+        </Button>
+      )}
     </nav>
   );
 };

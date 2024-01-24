@@ -67,7 +67,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
       toast({
         title: "post successfully created",
       });
-      return navigate(`/posts/${post.$id}`);
+      return navigate(`/post/${post.$id}`);
     }
 
     // ACTION = CREATE
@@ -83,6 +83,8 @@ const PostForm = ({ post, action }: PostFormProps) => {
     }
     navigate("/");
   };
+
+  console.log(" image", post?.imageUrl);
 
   return (
     <Form {...form}>
@@ -170,10 +172,10 @@ const PostForm = ({ post, action }: PostFormProps) => {
           <Button
             type="submit"
             className="shad-button_primary whitespace-nowrap"
-            disabled={isLoadingCreate}
+            disabled={isLoadingCreate || isLoadingUpdate}
           >
-            {isLoadingCreate}
-            post
+            {isLoadingCreate || (isLoadingUpdate && "Loading...")}
+            {action} post
           </Button>
         </div>
       </form>

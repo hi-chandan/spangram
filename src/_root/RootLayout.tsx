@@ -4,13 +4,12 @@ import Topbar from "@/components/shared/Topbar";
 import { Button } from "@/components/ui/button";
 import React from "react";
 import { Outlet } from "react-router-dom";
-
+import RightSide from "@/components/shared/RightSide";
 const Home = () => {
   return (
     <div className="w-full md:flex ">
       <LeftSidebar />
       <Topbar />
-
       <section className="flex flex-1 h-full">
         <Outlet />
       </section>

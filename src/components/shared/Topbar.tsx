@@ -8,7 +8,10 @@ const Topbar = () => {
   const { mutate: signOut, isSuccess } = useSignOutAccount();
   const { user } = useUserContext();
   useEffect(() => {
-    if (isSuccess) navitage(0);
+    if (isSuccess) {
+      window.location.reload();
+      navitage(0);
+    }
   }, [isSuccess]);
   return (
     <section className="topbar">

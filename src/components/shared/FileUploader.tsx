@@ -9,7 +9,7 @@ type FileUploaderProps = {
 
 const FileUploader = ({ fieldChange, mediaUrl }: FileUploaderProps) => {
   const [file, setFile] = useState<File[]>([]);
-  const [fileUrl, setFileurl] = useState("");
+  const [fileUrl, setFileurl] = useState(mediaUrl);
 
   const onDrop = useCallback(
     (acceptedFiles: FileWithPath[]) => {
@@ -34,8 +34,14 @@ const FileUploader = ({ fieldChange, mediaUrl }: FileUploaderProps) => {
       />
       {fileUrl ? (
         <>
-          <div className="flex flex-1 justify-center w-full p-5 lg:p-10">
-            <img src={fileUrl} alt="image" className="file_uploader-img" />
+          <div className="flex flex-1  justify-center w-full p-5 lg:p-10">
+            <img
+              src={fileUrl}
+              alt="image"
+              className="file_uploader-img"
+              width={96}
+              height={77}
+            />
           </div>
           <p className="file_uploader-label">Click or drang photo to replace</p>
         </>

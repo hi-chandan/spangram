@@ -14,20 +14,23 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { CreateUserAccount } from "@/lib/appwrite/api";
-import { appwriteConfig } from "@/lib/appwrite/config";
 import { useToast } from "@/components/ui/use-toast";
-import {
-  useCreateUserAccount,
-  useSignInAccount,
-} from "@/lib/react-query/queriesAndMutations";
+import { useSignInAccount } from "@/lib/react-query/queriesAndMutations";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "@/context/AuthContext";
+import { useState } from "react";
+
+// type ans = {
+//   setans:string;
+//   giveans:string;
+
+// };
+
 export function SigninFrom() {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
-  console.log("This si the isUserLoading", isUserLoading);
+  const [giveans, setans] = useState("");
   const { mutateAsync: signInAccount } = useSignInAccount();
   // 1. Define your form.
   const form = useForm<z.infer<typeof SigninValidation>>({
@@ -49,7 +52,7 @@ export function SigninFrom() {
       });
 
       if (!session) {
-        return toast({ title: "Sign in failed. Please try again." });
+        return;
       }
 
       const isLoggedIn = await checkAuthUser();
@@ -59,9 +62,7 @@ export function SigninFrom() {
         navigate("/");
         toast({ title: "Login Success" });
       } else {
-        toast({ title: "Login failed. Please try again." });
-
-        return;
+        return setans("Login faild ");
       }
     } catch (error) {
       console.log({ error });
@@ -123,9 +124,13 @@ export function SigninFrom() {
           >
             {isUserLoading ? <div className="">Loading...</div> : "Sign-in"}
           </Button>
+          <p className="text-center text-red ">{giveans}</p>
           <p className="text-small-regular text-light-2 text-center mt-2">
             Don&apos;t have an account?
-            <Link to="/" className="text-primary-500 text-small-semibold ml-1">
+            <Link
+              to="/sign-up"
+              className="text-primary-500 text-small-semibold ml-1"
+            >
               Sign up
             </Link>
           </p>
