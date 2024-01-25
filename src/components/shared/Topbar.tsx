@@ -9,8 +9,7 @@ const Topbar = () => {
   const { user } = useUserContext();
   useEffect(() => {
     if (isSuccess) {
-      window.location.reload();
-      navitage(0);
+      navitage("sign-in");
     }
   }, [isSuccess]);
   return (

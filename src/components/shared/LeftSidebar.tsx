@@ -14,8 +14,7 @@ const LeftSidebar = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      window.location.reload();
-      navigate("/");
+      navigate("/sign-in");
     }
   }, [isSuccess]);
 
