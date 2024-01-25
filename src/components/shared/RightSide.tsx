@@ -21,9 +21,12 @@ const RightSide = () => {
         {isLoading && !creators ? (
           <Loader />
         ) : (
-          <ul className="grid grid-cols-2 gap-2 p-3 ">
+          <ul className="grid  lg:grid-cols-1  xl:grid-cols-2   gap-2 p-3 ">
             {creators?.documents.map((creator) => (
-              <li key={creator?.$id} className="flex-1 min-w-[200px] w-full  ">
+              <li
+                key={creator?.$id}
+                className="flex-1 md:min-w-[100px] lg:min-w-[200px] w-full  "
+              >
                 <UserCard user={creator} />
               </li>
             ))}

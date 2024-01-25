@@ -13,6 +13,7 @@ import {
   PostDetails,
   Profile,
   UpdateProfile,
+  LikedPosts,
 } from "./_root/pages";
 import { Toaster } from "./components/ui/toaster";
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/post/:id" element={<PostDetails />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/update-profile/:id" element={<UpdateProfile />} />
+          <Route path="/profile/:id/liked-posts" element={<LikedPosts />} />
         </Route>
       </Routes>
       <Toaster />
