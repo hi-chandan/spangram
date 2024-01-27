@@ -1,6 +1,9 @@
 To see the preview of the working website click 
 
 [https://spangram-n14o.vercel.app/sign-in]
+step : Register give any email
+step2: login to home page
+step3: test it's features and functionality
 ## 📋 <a name="table">Table of Contents</a>
 
 1.  😀 [Introduction](#introduction)
