@@ -12,6 +12,17 @@ step3: test it's features and functionality
 4.  🤸 [Quick Start](#quick-start)
 
 ## <a name="introduction">🤖 Introduction</a>
+image preview of website login and registraiton page
+![image](https://github.com/Hi-LEO/spangram/assets/125797501/b6526871-5c9c-4949-8596-aae4674b308d)
+
+registration page
+![image](https://github.com/Hi-LEO/spangram/assets/125797501/6c6e2626-9d92-439e-874a-5fd1a7449ca9)
+
+home page
+
+![image](https://github.com/Hi-LEO/spangram/assets/125797501/8617f270-017b-4799-9eb4-8267a77090ec)
+
+
 
 Master appwrite and react js in two parts by first learning fundamentals, advanced techniques, and theming. Then, build a stunning snapgram landing page, applying learned skills to create a visually impressive website. below is the image of website and design.
 desktop page
