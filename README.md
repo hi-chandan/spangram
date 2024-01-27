@@ -1,3 +1,7 @@
+To see the preview of the working website click 
+```bash
+https://spangram-n14o.vercel.app/sign-in
+```
 ## 📋 <a name="table">Table of Contents</a>
 
 1.  😀 [Introduction](#introduction)
