@@ -22,6 +22,10 @@ home page
 
 ![image](https://github.com/Hi-LEO/spangram/assets/125797501/8617f270-017b-4799-9eb4-8267a77090ec)
 
+mobile veiw
+
+![image](https://github.com/Hi-LEO/spangram/assets/125797501/d828efaf-2f58-400b-8bba-521b2debc891)
+
 
 
 Master appwrite and react js in two parts by first learning fundamentals, advanced techniques, and theming. Then, build a stunning snapgram landing page, applying learned skills to create a visually impressive website. below is the image of website and design.
